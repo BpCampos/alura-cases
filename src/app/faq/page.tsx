@@ -1,13 +1,31 @@
+import { api } from '@/lib/api'
 import Link from 'next/link'
-import React from 'react'
+import { metadata } from '../layout'
+import Title from '@/components/Title'
+import Faq from '@/components/Faq'
 
-export default function FAQPage() {
+interface FAQ {
+  answer: string
+  question: string
+}
+
+metadata.title = 'FAQ - Alura Cases'
+
+export default async function FAQPage() {
+  const response = await api.get('/alura-cases-faq.json')
+  const faq: FAQ[] = response.data
+
   return (
-    <main className=" w-screen">
-      <h1 className="text-red-500  text-8xl font-bold">FAQPage...</h1>
-      <Link href="/" className="text-red-500  text-8xl font-bold">
+    <main className=" max-w-screen ml-5">
+      <Title>Alura Cases - FAQ</Title>
+      <Link href="/" className="text-purple-800 font-bold text-2xl">
         Ir para a Home
       </Link>
+      <ul className="w-3/5 mb-14">
+        {faq.map(({ question, answer }) => {
+          return <Faq question={question} answer={answer}></Faq>
+        })}
+      </ul>
     </main>
   )
 }

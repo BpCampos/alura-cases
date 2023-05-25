@@ -1,7 +1,11 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Open_Sans as OpenSans } from 'next/font/google'
+import Footer from '@/components/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const openSans = OpenSans({
+  subsets: ['latin'],
+  variable: '--font-openSans',
+})
 
 export const metadata = {
   title: 'alura-cases-divulgacao',
@@ -11,7 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className="bg-slate-100">{children}</body>
+      <body className={`${openSans.variable} bg-slate-100 font-sans`}>
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }

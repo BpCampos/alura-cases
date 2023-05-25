@@ -1,11 +1,14 @@
 import Title from '@/components/Title'
+import Image from 'next/image'
 import Link from 'next/link'
+import { metadata } from './layout'
+
+metadata.title = 'HOME - Alura Cases'
 
 export default function Home() {
   return (
-    <main className="w-screen h-screen flex">
+    <main className="max-w-screen h-screen -mb-[80px] flex">
       {/*Left side*/}
-
       <div className="flex justify-end w-1/2 items-center mr-9">
         <section className="w-1/2">
           <img src="../images/alura-logo.svg" alt="Alura logo" className="w-28 p-0 mb-20" />
@@ -25,7 +28,7 @@ export default function Home() {
             <input
               type="text"
               placeholder="Coloque seu email aqui"
-              className="border border-black rounded-md px-3 py-1 pr-11"
+              className="border border-black rounded-md px-3 py-1 pr-11 placeholder:text-slate-900"
             />
             <button type="submit" className="bg-purple-950 text-white px-7 py-2 rounded-lg">
               Cadastrar
@@ -36,10 +39,12 @@ export default function Home() {
 
       {/*Right side*/}
       <div className="flex items-center justify-center w-1/2">
-        <img
-          src="../images/alura-cases.png"
+        <Image
+          width={900}
+          height={900}
+          src="/images/alura-cases.png"
           alt=""
-          className="object-cover object-left w-full h-3/4 rounded-s-xl shadow-lg shadow-black"
+          className="object-cover object-left w-full h-2/3 rounded-s-xl shadow-lg shadow-black"
         />
       </div>
     </main>
