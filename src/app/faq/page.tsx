@@ -23,7 +23,7 @@ export default async function FAQPage() {
       </Link>
       <ul className="w-3/5 mb-14">
         {faq.map(({ question, answer }) => {
-          return <Faq question={question} answer={answer}></Faq>
+          return <Faq key={question} question={question} answer={answer}></Faq>
         })}
       </ul>
     </main>
